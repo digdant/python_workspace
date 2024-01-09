@@ -1,0 +1,88 @@
+######################
+1 - Load CSV
+######################
+
+import pandas as pd
+
+df = pd.read.csv('path')
+
+
+
+############################
+2 - Explorando as variáveis
+###########################
+
+df.describe
+df['column'].describe() 
+
+df.head()
+
+df['column'].unique()
+df['column'].value_counts()
+
+df['column'].mean() 
+df['column'].median() 
+
+__________________________________________________________________
+####### Separate predictors into categorical and numerical #######
+__________________________________________________________________
+categorical_predictors = df.select_dtypes(include=['object']).columns.tolist()
+categorical_predictors
+
+numerical_predictors = df.select_dtypes(include=['number']).columns.tolist()
+numerical_predictors
+
+_____________________________
+####### HISTOGRAMA ##########
+_____________________________
+
+df.column.plot(kind='hist')
+
+
+_____________________________
+######### BOXPLOT ###########
+_____________________________
+
+import seaborn as sns
+sns.boxplot(df.Column)
+
+
+
+############################
+2 - Dummies Variables
+############################
+
+data = pd.get_dummies(data, columns = ['P_2n_7_str'])
+
+lista_columns_to_dummie = ['P_2n_7_str', 'existe_zero_a_esquerda_fileira_medianas_str','existe_zero_a_direita_fileira_medianas_str']
+data = pd.get_dummies(data, columns = lista_columns_to_dummie)
+
+
+# Extract features and target
+target = data['fileiras_nao_sorteadas_str']
+features = data.drop('fileiras_nao_sorteadas_str', axis=1)
+
+
+df['column_categoric'] = df['column_categoric'].replace({'Iris-setosa':0, 'Iris-versicolor':1, 'Iris-virginica':2})
+
+
+#####################################
+
+# Load data from CSV
+csv_file_path = "/content/prepared_2.csv"
+df = pd.read_csv(csv_file_path)
+
+
+from sklearn.preprocessing import LabelEncoder
+
+encoder = LabelEncoder()
+
+df['target'] = encoder.fit_transform(df[['target']])
+
+categorical = df.select_dtypes(include=['object']).columns.tolist()
+df = pd.get_dummies(df, columns = categorical)
+
+# Assuming your CSV has a column named 'target' that you want to predict
+target_column = 'target'
+y = df[target_column].values
+df = df.drop(columns=['target'])

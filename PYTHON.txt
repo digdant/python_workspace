@@ -6,7 +6,13 @@ import pandas as pd
 
 df = pd.read.csv('path')
 
+# PANDA Dataframe
+notas.columns = ["UsuarioID", "FilmeID", "Nota", "Momento Avaliado"] 
 
+notas['Nota'].unique()
+notas['Nota'].value_counts()
+# Média
+notas['Nota'].mean()
 
 ############################
 2 - Explorando as variáveis
@@ -22,7 +28,10 @@ df['column'].value_counts()
 
 df['column'].mean() 
 df['column'].median() 
+print(notas['Nota'].mean())
+print(notas['Nota'].median())
 
+media_por_filme = notas.groupby("FilmeID").mean()["Nota"]
 __________________________________________________________________
 ####### Separate predictors into categorical and numerical #######
 __________________________________________________________________
@@ -38,7 +47,9 @@ _____________________________
 
 df.column.plot(kind='hist')
 
+import seaborn as sns
 
+sns.distplot(media_por_filme)
 _____________________________
 ######### BOXPLOT ###########
 _____________________________

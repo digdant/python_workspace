@@ -6,22 +6,19 @@ import pandas as pd
 
 df = pd.read.csv('path')
 
-# PANDA Dataframe
+# ALTERANDO_NOME_colunas
 notas.columns = ["UsuarioID", "FilmeID", "Nota", "Momento Avaliado"] 
-
-notas['Nota'].unique()
-notas['Nota'].value_counts()
-# Média
-notas['Nota'].mean()
 
 ############################
 2 - Explorando as variáveis
 ###########################
 
+df.head()
+df.tail()
+
 df.describe
 df['column'].describe() 
 
-df.head()
 
 df['column'].unique()
 df['column'].value_counts()
@@ -32,6 +29,7 @@ print(notas['Nota'].mean())
 print(notas['Nota'].median())
 
 media_por_filme = notas.groupby("FilmeID").mean()["Nota"]
+
 __________________________________________________________________
 ####### Separate predictors into categorical and numerical #######
 __________________________________________________________________

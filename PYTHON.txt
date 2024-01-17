@@ -3,11 +3,12 @@
 ######################
 
 import pandas as pd
-
 df = pd.read.csv('path')
 
 # ALTERANDO_NOME_colunas
-notas.columns = ["UsuarioID", "FilmeID", "Nota", "Momento Avaliado"] 
+notas.columns = ["UsuarioID", "FilmeID", "Nota", "Momento Avaliado"]
+
+# X = df.drop(columns=['Species'])
 
 ############################
 2 - Explorando as variáveis
@@ -43,9 +44,9 @@ _____________________________
 ####### HISTOGRAMA ##########
 _____________________________
 
-df.column.plot(kind='hist')
-
 import seaborn as sns
+
+df.column.plot(kind='hist')
 
 sns.distplot(media_por_filme)
 _____________________________
@@ -76,12 +77,6 @@ df['column_categoric'] = df['column_categoric'].replace({'Iris-setosa':0, 'Iris-
 
 
 #####################################
-
-# Load data from CSV
-csv_file_path = "/content/prepared_2.csv"
-df = pd.read_csv(csv_file_path)
-
-
 from sklearn.preprocessing import LabelEncoder
 
 encoder = LabelEncoder()

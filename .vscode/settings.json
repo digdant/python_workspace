@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./_REINFORCEMENT_LEARNING_"
+    ]
+}
